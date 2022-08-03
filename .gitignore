@@ -6,3 +6,6 @@ node_modules/.bin/acorn
 node_modules/.bin/acorn.cmd
 node_modules/.bin/ansi-html
 node_modules
+.eslintcache
+.vscode/settings.json
+package-lock.json

@@ -5,11 +5,16 @@ import React, { useState } from "react";
 
 const ExpenseItem = (props) => {
   const [title, setTitle] = useState(props.title);
+  const [titleHandle, setTitleHandle] = useState(props.title);
 
-  const clickHandler = () => {
-    setTitle("Updated!");
-    console.log(title);
+  const titleHandler = (event) => {
+    setTitleHandle(event.target.value);
   };
+
+  const titleChangeHandler = (event) => {
+    setTitle(titleHandle);
+  }
+
 
   return (
     <Card className="expense-item">
@@ -18,7 +23,8 @@ const ExpenseItem = (props) => {
         <h2>{title}</h2>
         <div className="expense-item__price">${props.amount}</div>
       </div>
-      <button onClick={clickHandler}>Change title</button>
+      {/* <input type = 'text ' onChange={titleHandler} />
+      <button type="submit" onClick = {titleChangeHandler}>Change</button> */}
     </Card>
   );
 };

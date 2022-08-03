@@ -9,6 +9,12 @@ const DUMMY_DATA = [
     title: "Toilet Paper",
     amount: 94.12,
     date: new Date(),
+  },
+  {
+    id: "e2",
+    title: "Toilet Paper",
+    amount: 94.12,
+    date: new Date('11.02.2020'),
   }
 ];
 
@@ -19,7 +25,7 @@ function App() {
   const addExpenseHandler = expense =>{
     setExpense((prevExpenses) => {
       return [expense, ...prevExpenses]
-    })
+    })  
   }
 
   return (

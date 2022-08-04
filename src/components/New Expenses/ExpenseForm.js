@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "../css/ExpenseForm.css";
 
-const ExpenseForm = (props) => {
+const ExpenseForm = ({onSaveExpenseData, onHide}) => {
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredAmount, setEnteredAmount] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
@@ -23,11 +23,11 @@ const ExpenseForm = (props) => {
 
     const expenseData = {
       title: enteredTitle,
-      amount: enteredAmount,
+      amount: +enteredAmount,
       date: new Date(enteredDate),
     };
 
-    props.onSaveExpenseData(expenseData);
+    onSaveExpenseData(expenseData);
 
     setEnteredTitle('')
     setEnteredDate('')
@@ -35,43 +35,16 @@ const ExpenseForm = (props) => {
    
   }
 
-  //   const [userInput, setUserInput] = useState({
-  //       enteredTitle: '',
-  //       enteredAmount: '',
-  //       enteredDate: ''
-  //   });
-
-  // const titleChangeHandler = (event) => {
-  //   setUserInput({
-  //       ...userInput,
-  //       enteredTitle: event.target.value,
-  //   });
-  // };
-
-  // const amountChangeHandler = (event) => {
-  //   setUserInput({
-  //       ...userInput,
-  //       enteredAmount: event.target.value,
-  //   });
-  // };
-
-  // const dateChangeHandler = (event) => {
-  //   setUserInput({
-  //       ...userInput,
-  //       enteredDate: event.target.value,
-  //   });
-  // };
-
   return (
     <form onSubmit={onSubmitFormHandler}>
       <div className="new-expense__controls">
         <div className="new-expense__control">
-          <label>Title</label>
+          <label style={{color: 'whitesmoke'}}>Title</label>
           <input value={enteredTitle} type="text" onChange={titleChangeHandler} />
         </div>
 
         <div className="new-expense__control">
-          <label>Amount</label>
+          <label style={{color: 'whitesmoke'}}>Amount</label>
           <input
             value={enteredAmount}
             type="number"
@@ -82,7 +55,7 @@ const ExpenseForm = (props) => {
         </div>
 
         <div className="new-expense__control">
-          <label>Date</label>
+          <label style={{color: 'whitesmoke'}}>Date</label>
           <input
           value={enteredDate}
             type="date"
@@ -95,6 +68,7 @@ const ExpenseForm = (props) => {
       </div>
       <div className="new-expense__actions">
         <button type="submit">Add Expense</button>
+        <button onClick={onHide} >Cancel</button>
       </div>
     </form>
   );
